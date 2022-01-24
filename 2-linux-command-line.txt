@@ -1,0 +1,18 @@
+# How to run ubuntu using docker?
+---------------------------------
+
+for pulling image if it is not available locally
+docker pull ubuntu
+
+for running local image
+docker run ubuntu
+
+for seeing list of running processes/containers
+docker ps
+
+for seeing all running and stopped processes/containers
+docker ps -a
+
+to run image in interactive mode
+docker run -it ubuntu
+
