@@ -57,4 +57,14 @@ less : to view the content of file in an interactive way
 head -n 5 : to view first 5 lines of file
 tail -n 5 : to view last 5 lines of file
 
+## Redirection
+---------------
+
+cat file1.txt > file2.txt : read content of file1.txt and write to file2.txt
+cat file1.txt file2.txt > combined.txt : read content of file1.txt file2.txt and write to combined.txt
+
+echo hello world > message.txt : write echo output to message.txt file
+
+ls -l /etc/ > fileInfo.txt : write list of files and folders in /etc/ to fileInfo.txt
+
 
