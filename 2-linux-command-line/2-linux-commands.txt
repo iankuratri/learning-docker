@@ -4,10 +4,29 @@
 ## Managing Packages
 ---------------------
 
-apt - package manager for linux
-apt update - update package database
-apt list - list all the packages
-apt install nano - install a package
-apt remove nano - uninstall a package
+apt : package manager for linux
+apt update : update package database
+apt list : list all the packages
+apt install nano : install a package
+apt remove nano : uninstall a package
 
-nano - basic text editor for linux
+nano : basic text editor for linux
+
+## Navigating the File System
+------------------------------
+
+pwd : print working directory
+
+ls : shows list of files and folders (horizontally)
+li -1 : shows list of files and folders (vertically)
+ls -l : shows long list with permissions, size, date etc
+ls [path] : to view list of files and folders of a specified directory 
+
+cd : change current directory
+cd / : absolute path from root directory
+cd dev/ : relative path from current directory
+cd ~ : to go to home directory
+
+
+
+
