@@ -67,4 +67,11 @@ echo hello world > message.txt : write echo output to message.txt file
 
 ls -l /etc/ > fileInfo.txt : write list of files and folders in /etc/ to fileInfo.txt
 
+## Searching for text
+----------------------
 
+grep : grep command can search for a string in groups of files
+grep -i hello file1.txt : to search hello text in file1.txt, -i means case insensitive 
+grep -i hello file1.txt file2.txt : to search in multiple files
+grep -i hello file* :  to search using a pattern/wildcard
+grep -i -r hello /etc/ : to search in a directory
