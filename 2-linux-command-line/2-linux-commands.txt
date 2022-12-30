@@ -1,0 +1,13 @@
+# Linux commands
+-----------------
+
+## Managing Packages
+---------------------
+
+apt - package manager for linux
+apt update - update package database
+apt list - list all the packages
+apt install nano - install a package
+apt remove nano - uninstall a package
+
+nano - basic text editor for linux
