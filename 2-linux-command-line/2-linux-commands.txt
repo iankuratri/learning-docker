@@ -10,8 +10,6 @@ apt list : list all the packages
 apt install nano : install a package
 apt remove nano : uninstall a package
 
-nano : basic text editor for linux
-
 ## Navigating the File System
 ------------------------------
 
@@ -45,5 +43,18 @@ mv hello.txt /etc : move hello.txt to /etc directory
 rm : remove file
 rm hello.txt : remove hello.txt file
 rm -r test : remove test directory
+
+## Editing and Viewing Files
+-----------------------------
+
+nano : basic text editor for linux
+nano hello.txt : to edit hello.txt
+
+cat : basic text viewer for linux
+cat hello.txt : to view the content of hello.txt file
+
+less : to view the content of file in an interactive way 
+head -n 5 : to view first 5 lines of file
+tail -n 5 : to view last 5 lines of file
 
 
