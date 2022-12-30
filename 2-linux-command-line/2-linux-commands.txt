@@ -18,6 +18,7 @@ pwd : print working directory
 ls : shows list of files and folders (horizontally)
 li -1 : shows list of files and folders (vertically)
 ls -l : shows long list with permissions, size, date etc
+ls -a : also shows hidden files
 ls [path] : to view list of files and folders of a specified directory 
 
 cd : change current directory
@@ -67,7 +68,7 @@ echo hello world > message.txt : write echo output to message.txt file
 
 ls -l /etc/ > fileInfo.txt : write list of files and folders in /etc/ to fileInfo.txt
 
-## Searching for text
+## Searching for Text
 ----------------------
 
 grep : grep command can search for a string in groups of files
@@ -75,3 +76,15 @@ grep -i hello file1.txt : to search hello text in file1.txt, -i means case insen
 grep -i hello file1.txt file2.txt : to search in multiple files
 grep -i hello file* :  to search using a pattern/wildcard
 grep -i -r hello /etc/ : to search in a directory
+
+## Finding Files and Directories
+---------------------------------
+
+find : for finding files and directories
+find /etc/ : find files and directories in a directory
+find -type d : find directories in a directory
+find -type f : find files in a directory
+find -type f -name "f*" : find all the files whose name starts with f
+find -type f -iname "f*" : find all the files whose name starts with f, case insensitive
+find / -type f -name "*.py" : find all the .py files in root directory
+find / -type f -name "*.py" > pythonFiles.txt : find all the .py files in root directory and write to pythonFiles.txt
