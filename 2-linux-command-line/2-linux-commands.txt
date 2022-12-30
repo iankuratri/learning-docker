@@ -27,6 +27,23 @@ cd / : absolute path from root directory
 cd dev/ : relative path from current directory
 cd ~ : to go to home directory
 
+## Manipulating Files and Directories
+--------------------------------------
 
+mkdir -> make directory
+mkdir test : create a folder named test
+
+mv : move or rename
+mv test docker : rename test folder to docker
+
+touch : create a new files
+touch hello.txt : create a file name hello.txt 
+
+mv hello.txt world.txt : rename hello.txt to world.txt
+mv hello.txt /etc : move hello.txt to /etc directory
+
+rm : remove file
+rm hello.txt : remove hello.txt file
+rm -r test : remove test directory
 
 
