@@ -131,5 +131,23 @@ echo DB_USER=ankur >> .bashrc : appends `DB_USER=ankur` line to the end of file
 
 source .bashrc : reloads the bashrc file to reflect changes of newly added env variable
 
+## Managing Processes
+----------------------
+
+A Process is an instance of a running program. 
+
+OR
+
+Process means any program is in execution.
+
+Thread means a segment of a process.
+
+ps : lists all the running processes in linux
+
+sleep 3 : prompt sleeps for 3 seconds and then wakes up
+
+kill [PID] : kills process with matching PID - Process ID
+
+kill 38 : kills process with PID = 38
 
 
