@@ -68,6 +68,8 @@ echo hello world > message.txt : write echo output to message.txt file
 
 ls -l /etc/ > fileInfo.txt : write list of files and folders in /etc/ to fileInfo.txt
 
+>> append operator, appends text to the end of file
+
 ## Searching for Text
 ----------------------
 
@@ -105,5 +107,29 @@ multiple line commands (press enter/return after every \)
 mkdir test;\ 
 cd test;\ 
 echo done 
+
+## Environment Variables
+-------------------------
+
+printenv : prints all the env variables in linux
+printenv PATH : print the value of PATH env variable
+echo $PATH : print the value of PATH env variable
+
+export DB_USER=ankur : sets env variable in current terminal session
+
+add permanent env variable in linux
+
+cd ~
+ls -a
+
+nano .bashrc 
+type `DB_USER=ankur` line to the end of file manually
+
+or 
+
+echo DB_USER=ankur >> .bashrc : appends `DB_USER=ankur` line to the end of file
+
+source .bashrc : reloads the bashrc file to reflect changes of newly added env variable
+
 
 
