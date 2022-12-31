@@ -88,3 +88,22 @@ find -type f -name "f*" : find all the files whose name starts with f
 find -type f -iname "f*" : find all the files whose name starts with f, case insensitive
 find / -type f -name "*.py" : find all the .py files in root directory
 find / -type f -name "*.py" > pythonFiles.txt : find all the .py files in root directory and write to pythonFiles.txt
+
+## Chaining commands
+---------------------
+
+make a directory named test, go inside test directory and print done
+
+mkdir test ; cd test ; echo done : all commands get executed, even if any command fails
+mkdir test && cd test && echo done : and operator, commands gets executed before any command fails 
+
+mkdir test || echo "directory exists" : or operator, if first command fails then only second gets executed
+ls /bin | less : pipe operator, output of ls /bin command goes to less command
+
+multiple line commands (press enter/return after every \)
+
+mkdir test;\ 
+cd test;\ 
+echo done 
+
+
