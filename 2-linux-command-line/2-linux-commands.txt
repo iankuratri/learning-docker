@@ -192,6 +192,7 @@ exit
 
 docker exec -it -u john 37f bash : login as john
 
+
 ## Managing Groups
 -------------------
 
@@ -210,5 +211,46 @@ grep john etc/passwd : to find john in etc/passwd file
 groups john : to view the groups of user john
 
 
+## File Permissions
+--------------------
 
+echo echo hello > deploy.sh : creating a .sh (shell) file with `echo hello` command written in it
 
+ls -l deploy.sh : to view the permission of `deploy.sh` file
+-rw-r--r-- 1 root root 11 Jan  1 06:50 deploy.sh : output of above command
+
+- : first letter tells whether its a file or directory, - means file, d means directory
+
+rest 9 letters are divided into three groups, like written below
+
+rw- : 1st group represents permission for user who owns this file, i.e root user here, execute permission is missing here
+r-- : 2nd group represents permission for the group that owns this file, i.e root group here, write and execute permission is missing here
+r-- : 3rd group represents permission for everyone else, write and execute permission is missing here
+
+r : first letter means read permission
+w : second letter means write permission
+x : third letter means execute permission
+
+if there is - in permission group that means no permission
+
+./deploy.sh : to execute `deploy.sh` file/shell script
+bash: ./deploy.sh: Permission denied : output of above command
+
+chmod : change mode command
+
+chmod u+x deploy.sh : to add execute permission for current user
+
+u means user || g means group || o means other
++ means add || - means remove 
+r means read permission || w means write permission || x means execute permission
+
+ugo+x : we can also combine user, group and other in single command
+u+r+w-x : we can also combine permissions using + and -
+
+we can type multiple file name `deploy1.sh deploy2.sh` or use any pattern `*.sh`
+
+now we can call
+./deploy.sh 
+
+output is 
+hello
