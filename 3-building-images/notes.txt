@@ -33,3 +33,18 @@ ENV - for setting env variables
 EXPOSE - for telling docker that our container is starting on a given port
 USER - for specifying the user that should run the application
 CMD, ENTRYPOINT - for specifying command that should be executed, when we start the container
+
+CMD:
+-----
+* Shell form
+* /bin/sh
+* cmd
+CMD npm start
+
+* Exec form
+CMD ["npm","start"]
+
+RUN vs CMD:
+------------
+Run is build time instruction, use RUN while building the app
+CMD is run time instruction, use CMD after the app is built
