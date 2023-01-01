@@ -1,6 +1,7 @@
 # Linux commands
 -----------------
 
+
 ## Managing Packages
 ---------------------
 
@@ -9,6 +10,7 @@ apt update : update package database
 apt list : list all the packages
 apt install nano : install a package
 apt remove nano : uninstall a package
+
 
 ## Navigating the File System
 ------------------------------
@@ -25,6 +27,7 @@ cd : change current directory
 cd / : absolute path from root directory
 cd dev/ : relative path from current directory
 cd ~ : to go to home directory
+
 
 ## Manipulating Files and Directories
 --------------------------------------
@@ -45,6 +48,7 @@ rm : remove file
 rm hello.txt : remove hello.txt file
 rm -r test : remove test directory
 
+
 ## Editing and Viewing Files
 -----------------------------
 
@@ -58,6 +62,7 @@ less : to view the content of file in an interactive way
 head -n 5 : to view first 5 lines of file
 tail -n 5 : to view last 5 lines of file
 
+
 ## Redirection
 ---------------
 
@@ -70,6 +75,7 @@ ls -l /etc/ > fileInfo.txt : write list of files and folders in /etc/ to fileInf
 
 >> append operator, appends text to the end of file
 
+
 ## Searching for Text
 ----------------------
 
@@ -78,6 +84,7 @@ grep -i hello file1.txt : to search hello text in file1.txt, -i means case insen
 grep -i hello file1.txt file2.txt : to search in multiple files
 grep -i hello file* :  to search using a pattern/wildcard
 grep -i -r hello /etc/ : to search in a directory
+
 
 ## Finding Files and Directories
 ---------------------------------
@@ -90,6 +97,7 @@ find -type f -name "f*" : find all the files whose name starts with f
 find -type f -iname "f*" : find all the files whose name starts with f, case insensitive
 find / -type f -name "*.py" : find all the .py files in root directory
 find / -type f -name "*.py" > pythonFiles.txt : find all the .py files in root directory and write to pythonFiles.txt
+
 
 ## Chaining commands
 ---------------------
@@ -107,6 +115,7 @@ multiple line commands (press enter/return after every \)
 mkdir test;\ 
 cd test;\ 
 echo done 
+
 
 ## Environment Variables
 -------------------------
@@ -131,6 +140,7 @@ echo DB_USER=ankur >> .bashrc : appends `DB_USER=ankur` line to the end of file
 
 source .bashrc : reloads the bashrc file to reflect changes of newly added env variable
 
+
 ## Managing Processes
 ----------------------
 
@@ -149,5 +159,56 @@ sleep 3 : prompt sleeps for 3 seconds and then wakes up
 kill [PID] : kills process with matching PID - Process ID
 
 kill 38 : kills process with PID = 38
+
+
+## Managing Users
+------------------
+
+useradd : for adding a user
+adduser : more interactive than useradd command, but uses it under the hood
+usermod : for modifying a user
+userdel : for deleting a user
+
+useradd -m john : add a new user named john
+
+adduser ankur : adds a new user, create a group with same name and adds the user to that group, 
+also asks for password, full name, room number, work phone etc
+
+cat /etc/passwd : to view user list
+john:x:1000:1000::/home/john:/bin/sh : output from above command
+
+usermod -s /bin/bash john : to change old shell (sh) to new shell (bash) of user john
+
+cat /etc/shadow : to view user password (stored in encrypted format)
+
+userdel john : to delete user
+
+
+How to login to docker container as john?
+
+docker ps
+docker exec -it 37f bash : login as root user, [37f] is the docker container ID here
+exit 
+
+docker exec -it -u john 37f bash : login as john
+
+## Managing Groups
+-------------------
+
+groupadd : for adding a group
+groupmod : for modifying a group
+groupdel : for deleting a group
+
+groupadd developers : adds a group name developers
+
+cat /etc/group : to view group list
+
+usermod -G developers john : adding john to developers group
+
+grep john etc/passwd : to find john in etc/passwd file
+
+groups john : to view the groups of user john
+
+
 
 
