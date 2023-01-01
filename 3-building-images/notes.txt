@@ -11,10 +11,25 @@ An image includes everything an application needs to be run.
 Container
 ----------
 
-A container is like a virtual machine which 
+A container is like a virtual machine which:
 
 * Provides an isolated env 
 * Can be stopped & restarted
 * its just a process!
 
 A container gets its file system from the image
+
+Dockerfile
+-----------
+
+A Dockerfile contains instructions for building an image.
+
+FROM - for specifying the base image
+WORKDIR - for specifying the working directory 
+COPY - for copying files and directories
+ADD - for adding files and directories
+RUN - for executing operating system commands
+ENV - for setting env variables
+EXPOSE - for telling docker that our container is starting on a given port
+USER - for specifying the user that should run the application
+CMD, ENTRYPOINT - for specifying command that should be executed, when we start the container
