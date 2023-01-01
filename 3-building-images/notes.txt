@@ -66,3 +66,19 @@ docker image prune : to remove all dangling images
 docker container prune : to remove all stopped containers
 
 
+Tagging images
+---------------
+
+docker build -t react-app:1 . 
+react-app is app name, 1 is app version which is used as a tag
+
+docker image remove react-app:1 
+remove react-app with tag 1
+
+docker image tag react-app:latest react-app:1
+tagging image after build
+
+docker image tag react-app:2 react-app:latest
+explicitly apply latest to newest image with tag 2
+
+
