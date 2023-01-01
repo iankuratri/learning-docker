@@ -8,6 +8,7 @@ An image includes everything an application needs to be run.
 * Application files
 * Env variables
 
+
 Container
 ----------
 
@@ -18,6 +19,7 @@ A container is like a virtual machine which:
 * its just a process!
 
 A container gets its file system from the image
+
 
 Dockerfile
 -----------
@@ -34,8 +36,8 @@ EXPOSE - for telling docker that our container is starting on a given port
 USER - for specifying the user that should run the application
 CMD, ENTRYPOINT - for specifying command that should be executed, when we start the container
 
-CMD:
------
+CMD
+----
 * Shell form
 * /bin/sh
 * cmd
@@ -44,12 +46,23 @@ CMD npm start
 * Exec form
 CMD ["npm","start"]
 
-RUN vs CMD:
-------------
+RUN vs CMD
+-----------
 Run is build time instruction, use RUN while building the app
 CMD is run time instruction, use CMD after the app is built
 
-Build Optimization:
---------------------
+
+Build Optimization
+-------------------
 
 To optimize build process add Stable instructions first, then add Changing instructions.
+
+
+Removing images and containers
+-------------------------------
+
+docker image prune : to remove all dangling images
+
+docker container prune : to remove all stopped containers
+
+
