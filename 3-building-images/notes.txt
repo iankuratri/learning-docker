@@ -1,0 +1,20 @@
+Image
+------
+
+An image includes everything an application needs to be run.
+
+* A cut down OS
+* Third party libraries
+* Application files
+* Env variables
+
+Container
+----------
+
+A container is like a virtual machine which 
+
+* Provides an isolated env 
+* Can be stopped & restarted
+* its just a process!
+
+A container gets its file system from the image
