@@ -48,3 +48,8 @@ RUN vs CMD:
 ------------
 Run is build time instruction, use RUN while building the app
 CMD is run time instruction, use CMD after the app is built
+
+Build Optimization:
+--------------------
+
+To optimize build process add Stable instructions first, then add Changing instructions.
