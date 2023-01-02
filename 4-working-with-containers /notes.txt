@@ -13,3 +13,19 @@ Viewing the Logs
 docker logs 2b44c6f945fb : to view container logs, 2b44c6f945fb is container id here
 docker logs -f [containerId] : to follow the logs
 docker logs -t [containerId] : to see the timestamps of logs
+
+
+Publishing Ports
+-----------------
+
+docker run -d -p 80:3000 --name port-app react-app 
+-d means detached
+-p means port mapping of docker container (80) to machine (3000)
+port-app is the container name
+react-app is the image name
+
+docker ps
+see port mapping below
+
+CONTAINER ID   IMAGE       COMMAND                  CREATED              STATUS              PORTS                  NAMES
+709ac87bb456   react-app   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:80->3000/tcp   port-app
