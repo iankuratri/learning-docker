@@ -82,3 +82,33 @@ docker image tag react-app:2 react-app:latest
 explicitly apply latest to newest image with tag 2
 
 
+Sharing docker images
+----------------------
+
+1. Go to hub.docker.com 
+2. Sign in or sign un 
+3. Create a Repository, lets say react-app
+4. Name of our Repository will be username/repo_name, that is `ankurzenways/react-app` in out case 
+5. Build local image using `docker build -t react-app:1 .`
+5. To push our local image to docker hub we have to change name of our local image to `ankurzenways/react-app`
+   
+   docker image tag [imageId] ankurzenways/react-app:2 
+   or
+   docker image tag react-app:1 ankurzenways/react-app:2
+
+6. Login to docker account in terminal using `docker login`, then type username and password
+7. Now push your local docker image to docker hub 
+
+   docker push ankurzenways/react-app:2
+
+8. To push next version of your image to docker hub
+
+   docker push ankurzenways/react-app:2
+
+
+Optionally, we can connect our docker hub account to Github or Bitbucket account, 
+so every time we do a push, docker hub automatically pulls the latest code and build a new image. 
+
+
+
+
