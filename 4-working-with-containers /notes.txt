@@ -38,3 +38,25 @@ docker exec port-app ls : to execute commands in running container
 docker exec -it port-app sh : open shell
 
 
+Stopping and Starting Containers
+---------------------------------
+
+docker stop port-app : to stop port-app container
+docker start port-app : to start port-app container
+
+RUN VS STOP command: run is used for starting new containers and stop is used for starting old stopped containers
+
+
+Removing Containers
+--------------------
+
+docker container rm [containerId]
+or
+docker rm [imageName]
+
+docker container rm 2b44c6f945fb
+docker rm port-app
+
+use -f to force remove the running container
+
+docker container prune : to remove all stopped containers
