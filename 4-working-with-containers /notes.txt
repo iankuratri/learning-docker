@@ -29,3 +29,12 @@ see port mapping below
 
 CONTAINER ID   IMAGE       COMMAND                  CREATED              STATUS              PORTS                  NAMES
 709ac87bb456   react-app   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:80->3000/tcp   port-app
+
+
+Executing Commands in Running containers
+-----------------------------------------
+
+docker exec port-app ls : to execute commands in running container
+docker exec -it port-app sh : open shell
+
+
