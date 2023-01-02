@@ -110,5 +110,36 @@ Optionally, we can connect our docker hub account to Github or Bitbucket account
 so every time we do a push, docker hub automatically pulls the latest code and build a new image. 
 
 
+Saving and Loading docker images
+---------------------------------
 
+Saving
+-------
 
+Lets say we have a docker image on machine 1 and we have to put it on machine 2 without putting it on docker hub.
+How do we do it?
+We can save that image in a compressed file on machine 1 and load that image on machine 2
+
+docker image save --help
+Usage:  docker image save [OPTIONS] IMAGE [IMAGE...]
+Save one or more images to a tar archive (streamed to STDOUT by default)
+Options:
+  -o, --output string   Write to a file, instead of STDOUT
+
+docker image save -o react-app.tar react-app:1
+react-app.tar is the file name here, react-app:1 is the image name
+
+A react-app.tar file will be created
+
+Loading
+--------
+
+docker image load --help
+Usage:  docker image load [OPTIONS]
+Load an image from a tar archive or STDIN
+Options:
+  -i, --input string   Read from tar archive file, instead of STDIN
+  -q, --quiet          Suppress the load output
+
+docker image load -i react-app.tar
+the above command loads docker image from `react-app.tar` file
