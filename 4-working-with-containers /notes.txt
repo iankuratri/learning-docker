@@ -1,0 +1,7 @@
+Starting Containers
+--------------------
+
+docker ps : to view running containers
+docker run react-app : does not allows to type in terminal
+docker run -d react-app : runs container in detached (-d) mode
+docker run -d --name blue-sky react-app : giving container a name (blue-sky)
