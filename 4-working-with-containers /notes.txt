@@ -123,3 +123,36 @@ Also we can share volume across multiple containers.
 Hence: 
 Volumes are the right way to persist data in dockerized applications,
 because they have different lifecycle than containers.
+
+
+Copying Files between the Host and Containers
+----------------------------------------------
+
+docker ps
+
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                    NAMES
+9768c3d82786   react-app   "docker-entrypoint.s…"   36 minutes ago   Up 36 minutes   0.0.0.0:4000->3000/tcp   quirky_banach
+
+docker exec -it 9768c3d82786 sh
+
+echo "hello docker" > logs.txt
+
+docker cp 9768c3d82786:/app/logs.txt .
+the above command will copy `logs.txt` file from container file system to machine file system
+
+cp means copy
+9768c3d82786 is containerId here
+/app/logs.txt is source directory, file to be copied
+. is destination, machine directory
+
+echo "don't tell anyone" > secret.txt
+
+docker cp ./secret.txt 9768c3d82786:/app
+the above command will copy `secret.txt` file from machine file system to container file system
+
+docker exec -it 9768c3d82786 sh
+
+cat secret.txt 
+output of above command - don't tell anyone
+
+
