@@ -121,3 +121,30 @@ vidly-app-web   latest    e69b4d6cb24d   About a minute ago   298MB
 vidly-app-api   latest    a49439cc3c6f   About a minute ago   183MB
 
 docker-compose build --no-cache : Do not use cache when building the image
+
+
+Starting and Stopping the Application
+--------------------------------------
+
+Starting
+---------
+
+docker-compose up : start application with docker-compose
+
+docker-compose up --build : build and start at the same time
+
+docker-compose up -d : start in detached mode
+
+docker-compose ps : see all the container relevant to your application
+
+NAME                COMMAND                  SERVICE             STATUS              PORTS
+vidly-app-api-1     "docker-entrypoint.s…"   api                 running             0.0.0.0:3001->3001/tcp
+vidly-app-db-1      "docker-entrypoint.s…"   db                  running             0.0.0.0:27017->27017/tcp
+vidly-app-web-1     "docker-entrypoint.s…"   web                 running             0.0.0.0:3000->3000/tcp
+
+Vidly app is now running on http://localhost:3000/
+
+Stopping
+---------
+
+docker-compose down : to stop and remove the containers
