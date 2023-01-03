@@ -156,3 +156,24 @@ cat secret.txt
 output of above command - don't tell anyone
 
 
+Sharing the Source Code with a Container
+-----------------------------------------
+
+docker run -d -p 5001:3000 -v $(pwd):/app react-app
+
+-d means detached
+-p means port mapping of docker container (5001) to machine (3000)
+-v means volume
+$(pwd) is current project directory stored on machine
+/app is react-app container directory
+react-app is the image name
+
+docker ps  
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                    NAMES
+76d23ac342f2   react-app   "docker-entrypoint.s…"   38 seconds ago   Up 32 seconds   0.0.0.0:5001->3000/tcp   optimistic_shannon
+
+docker logs -f 76d23ac342f2
+
+Now if we make changes in react-app project, 
+the changes will be reflected on browser, 
+without rebuilding the image
