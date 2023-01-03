@@ -113,4 +113,11 @@ the above command executes shell session in container id 9768c3d82786, image: re
 cd data && echo "written from docker container" > data.txt : adding a file to attached volume storage
 
 cat data.txt 
-written from docker container
+output of above command : written from docker container
+
+If we delete the above container, "data.txt" will still exist,
+because this file is stored in volume storage instead of container storage.
+
+Hence: 
+Volumes are the right way to persist data in dockerized applications,
+because they have different lifecycle than containers.
