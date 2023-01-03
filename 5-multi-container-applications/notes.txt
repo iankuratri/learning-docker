@@ -13,4 +13,35 @@ open Docker Desktop
 click on bug icon on the right top corner 
 then click on Clean / Purge data
 
+JSON and YAML Formats
+----------------------
+
+JSON format:
+
+{
+  "name": "The Ultimate Docker Course",
+  "price": 149,
+  "is_published": true,
+  "tags": [
+    "software",
+    "devops"
+  ],
+  "author": {
+    "first_name": "Mosh",
+    "last_name": "Hamedani"
+  }
+}
+
+YAML format:
+
+name: The Ultimate Docker Course
+price: 149
+is_published: true
+tags: 
+    - software
+    - devops
+author:
+    first_name: Mosh
+    last_name: Hamedani
+
 
