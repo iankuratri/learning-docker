@@ -60,3 +60,57 @@ docker rm port-app
 use -f to force remove the running container
 
 docker container prune : to remove all stopped containers
+
+
+Persisting Data using Volumes
+------------------------------
+
+Volumes: A volume is a storage outside of containers, 
+it can be a directory on the host, or somewhere on the cloud.
+
+docker volume
+Usage:  docker volume COMMAND
+Manage volumes
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+docker volume create app-data : create a docker volume named app-data
+
+docker volume ls
+DRIVER    VOLUME NAME
+local     app-data
+
+docker volume inspect app-data
+[
+    {
+        "CreatedAt": "2023-01-02T16:01:30Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/app-data/_data",
+        "Name": "app-data",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+
+docker run -d -p 4000:3000 -v app-data:/app/data react-app
+the above command attaches docker volume to docker image
+
+-d means detached
+-p means port mapping of docker container (4000) to machine (3000)
+-v means volume
+app-data is docker volume
+/app/data is react-app directory to be attached with volume
+react-app is the image name
+
+docker exec -it 9768c3d82786 sh
+the above command executes shell session in container id 9768c3d82786, image: react-app 
+
+cd data && echo "written from docker container" > data.txt : adding a file to attached volume storage
+
+cat data.txt 
+written from docker container
