@@ -206,3 +206,24 @@ lo        Link encap:Local Loopback
           TX packets:4 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
           RX bytes:215 (215.0 B)  TX bytes:215 (215.0 B)
+
+
+Viewing Logs
+-------------
+
+docker-compose logs : to view the across all containers of an application
+
+docker-compose logs --help
+
+Usage:  docker compose logs [OPTIONS] [SERVICE...]
+
+View output from containers
+
+Options:
+  -f, --follow          Follow log output.
+      --no-color        Produce monochrome output.
+      --no-log-prefix   Don't print prefix in logs.
+      --since string    Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+      --tail string     Number of lines to show from the end of the logs for each container. (default "all")
+  -t, --timestamps      Show timestamps.
+      --until string    Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
