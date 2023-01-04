@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  # frontend service named `web` 
+  web:
+    # path of frontend code
+    build: ./frontend 
+    # mapping docker container port `80` to host machine port `3000`
+    ports: 
+      - 80:3000
+    # restart the container unless stopped
+    restart: unless-stopped
+
+  # backend service named `api`
+  api:
+    # path of backend code
+    build: ./backend
+    # mapping docker container port `3001` to host machine port `3001`
+    ports:
+      - 3001:3001
+    # setting env variable in docker container, `db` is the name of database service and `vidly` is the name of database
+    environment:
+      DB_URL: mongodb://db/vidly
+    # over writing default CMD command (npm start) in ./backend/Dockerfile, executing a sh file, which contains a bunch of commands
+    command: ./docker-entrypoint.sh
+    # restart the container unless stopped
+    restart: unless-stopped
+
+  # database service name `db`
+  db:
+    # using mongo image from docker hub
+    image: mongo:4.0-xenial
+    # mapping docker container port `27017` to host machine port `27017`
+    ports:
+      - 27017:27017
+    # mapping volume named `vidly` to a directory inside container `/data/db`, mongodb default path for storing data 
+    volumes:
+      - vidly:/data/db
+    # restart the container unless stopped
+    restart: unless-stopped
+
+# defining a docker volume name `vidly` to persist monogodb data
+volumes:
+  vidly:
