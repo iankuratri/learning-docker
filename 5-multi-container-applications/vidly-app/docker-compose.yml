@@ -8,6 +8,12 @@ services:
     volumes:
       - ./frontend:/app
 
+  web-tests:
+    image: vidly-app-web
+    volumes:
+      - ./frontend:/app
+    command: npm test
+
   api:
     build: ./backend
     ports:
