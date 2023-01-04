@@ -1,0 +1,15 @@
+Reducing the Image Size
+------------------------
+
+docker build -t vidly_web_opt -f Dockerfile.prod .
+
+the above command builds docker image for production
+-f means file, 
+Dockerfile.prod is the prod docker file
+
+
+docker-compose -f docker-compose.prod.yml build
+
+the above command builds docker image and starts container for production
+-f means file, 
+docker-compose.prod.yml is the prod docker-compose file
