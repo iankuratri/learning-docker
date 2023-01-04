@@ -1,35 +1,54 @@
 version: "3.8"
 
 services:
+  # frontend service named `web` 
   web:
-    build: ./frontend
-    ports:
+    # path of frontend code
+    build: ./frontend 
+    # mapping docker container port `3000` to host machine port `3000`
+    ports: 
       - 3000:3000
-    volumes:
+    # mapping path of frontend code `./frontend` to docker container directory `/app`, to publish code changes, without rebuilding image
+    volumes: 
       - ./frontend:/app
 
-  web-tests:
-    image: vidly-app-web
-    volumes:
-      - ./frontend:/app
-    command: npm test
+  # # running frontend test cases in docker
+  # web-tests:
+  #   # using frontend service named `web` image
+  #   image: vidly-app-web
+  #   # mapping path of frontend code `./frontend` to docker container directory `/app`, to publish code changes, without rebuilding image
+  #   volumes:
+  #     - ./frontend:/app
+  #   # over writing default CMD command (npm start) in ./frontend/Dockerfile, executing command for running test cases
+  #   command: npm test
 
+  # backend service named `api`
   api:
+    # path of backend code
     build: ./backend
+    # mapping docker container port `3001` to host machine port `3001`
     ports:
       - 3001:3001
+    # setting env variable in docker container, `db` is the name of database service and `vidly` is the name of database
     environment:
       DB_URL: mongodb://db/vidly
+    # mapping path of backend code `./backend` to docker container directory `/app`, to publish code changes, without rebuilding image
     volumes:
       - ./backend:/app
+    # over writing default CMD command (npm start) in ./backend/Dockerfile, executing a sh file, which contains a bunch of commands
     command: ./docker-entrypoint.sh
 
+  # database service name `db`
   db:
+    # using mongo image from docker hub
     image: mongo:4.0-xenial
+    # mapping docker container port `27017` to host machine port `27017`
     ports:
       - 27017:27017
+    # mapping volume named `vidly` to a directory inside container `/data/db`, mongodb default path for storing data 
     volumes:
       - vidly:/data/db
 
+# defining a docker volume name `vidly` to persist monogodb data
 volumes:
   vidly:
