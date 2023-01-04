@@ -148,3 +148,61 @@ Stopping
 ---------
 
 docker-compose down : to stop and remove the containers
+
+
+Docker Networking
+------------------
+
+docker network ls
+NETWORK ID     NAME                DRIVER    SCOPE
+676e545c3fc8   bridge              bridge    local
+085a9e46916f   host                host      local
+1931aef55057   none                null      local
+9f67ebfc1ff3   vidly-app_default   bridge    local
+
+9f67ebfc1ff3   vidly-app_default   bridge    local
+this is our app network
+
+this network contains 3 hosts: 
+web, api and db
+and they talk to each other using their name
+
+docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                      NAMES
+c57dc075768b   vidly-app-api      "docker-entrypoint.s…"   21 minutes ago   Up 21 minutes   0.0.0.0:3001->3001/tcp     vidly-app-api-1
+f0ca6e2b6beb   mongo:4.0-xenial   "docker-entrypoint.s…"   21 minutes ago   Up 21 minutes   0.0.0.0:27017->27017/tcp   vidly-app-db-1
+f352c308a99e   vidly-app-web      "docker-entrypoint.s…"   21 minutes ago   Up 21 minutes   0.0.0.0:3000->3000/tcp     vidly-app-web-1
+
+docker exec -it -u root f352c308a99e sh : login as root user in vidly-app-web and open sh session
+
+ping api : pinging api container from web app container
+
+PING api (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.452 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.338 ms
+64 bytes from 172.18.0.2: seq=2 ttl=64 time=0.306 ms
+64 bytes from 172.18.0.2: seq=3 ttl=64 time=0.389 ms
+64 bytes from 172.18.0.2: seq=4 ttl=64 time=0.350 ms
+64 bytes from 172.18.0.2: seq=5 ttl=64 time=0.237 ms
+64 bytes from 172.18.0.2: seq=6 ttl=64 time=0.207 ms
+^C
+--- api ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+
+ifconfig : to get ip address of container, i.e., 172.18.0.4
+
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:12:00:04  
+          inet addr:172.18.0.4  Bcast:172.18.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:98 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:70 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:12006 (11.7 KiB)  TX bytes:418746 (408.9 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:4 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:215 (215.0 B)  TX bytes:215 (215.0 B)
