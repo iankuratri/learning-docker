@@ -7,6 +7,7 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile.prod 
+    image: vidly_web:1
     # mapping docker container port `80` to host machine port `3000`
     ports: 
       - 80:80
@@ -17,6 +18,7 @@ services:
   api:
     # path of backend code
     build: ./backend
+    image: vidly_api:1
     # mapping docker container port `3001` to host machine port `3001`
     ports:
       - 3001:3001
