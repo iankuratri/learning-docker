@@ -8,7 +8,7 @@ the above command builds docker image for production
 Dockerfile.prod is the prod docker file
 
 
-docker-compose -f docker-compose.prod.yml build
+docker-compose -f docker-compose.prod.yml up
 
 the above command builds docker image and starts container for production
 -f means file, 
